@@ -24,7 +24,7 @@ class Controller_empresa:
                 # Insere e persiste a nova empresa
                 oracle.write(f"insert into empresa values ('{cnpj}', '{nome_fantasia}', '{razao_social}')")
                 # Recupera os dados da nova empresa criado transformando em um DataFrame
-                df_empresa = oracle.sqlToDataFrame(f"select cnpj, nome_fantasia from empresa where cnpj = '{cnpj}'")
+                #df_empresa = oracle.sqlToDataFrame(f"select cnpj, nome_fantasia from empresa where cnpj = '{cnpj}'")
                 # Cria um novo objeto empresa
                 #novo_empresa = Empresa(df_empresa.cnpj.values[0], df_empresa.nome_fantasia.values[0])
                 # Exibe os atributos do novo cliente
@@ -63,9 +63,11 @@ class Controller_empresa:
                 # Recupera os dados do nova empresa criada transformando em um DataFrame
                 df_empresa = oracle.sqlToDataFrame(f"select cnpj, nome_fantasia from empresa where cnpj = {cnpj}")
                 # Cria um novo objeto empresa
-                empresa_atualizado = Empresa(df_empresa.cnpj.values[0], df_empresa.nome_fantasia.values[0])
+                #empresa_atualizado = Empresa(df_empresa.cnpj.values[0], df_empresa.nome_fantasia.values[0])
                 # Exibe os atributos da nova empresa
-                print(empresa_atualizado.to_string())
+                #print(empresa_atualizado.to_string())
+                print("CNPJ: ", cnpj)
+                print("Nome fantasia: ", novo_nome)
                 # Retorna o objeto empresa_atualizado para utilização posterior, caso necessário
                 #return empresa_atualizado
                 opcao = int(input("Deseja atualizar mais empresas? 1-Sim 2-Não"))
@@ -84,22 +86,26 @@ class Controller_empresa:
         while opcao == 1:
             # Solicita ao usuário o CNPJ da empresa a ser alterado
             cnpj = int(input("CNPJ da empresa que irá excluir: "))        
-
-            # Verifica se a empresa existe na base de dados
-            if not self.verifica_existencia_empresa(oracle, cnpj):            
-                # Recupera os dados da nova empresa criada transformando em um DataFrame
-                df_empresa = oracle.sqlToDataFrame(f"select cnpj, nome_fantasia from empresa where cnpj = {cnpj}")
-                # Revome a empresa da tabela
-                oracle.write(f"delete from empresa where cnpj = {cnpj}")            
-                # Cria um novo objeto empresa para informar que foi removido
-                empresa_excluido = Empresa(df_empresa.cnpj.values[0], df_empresa.nome_fantasia.values[0])
-                # Exibe os atributos da empresa excluída
-                print("Empresa Removida com Sucesso!")
-                print(empresa_excluido.to_string())
-                opcao = int(input("Deseja excluir mais empresas? 1-Sim 2-Não"))
+            confirma = int(input("Tem certeza que deseja excluir?1-sim 2-não"))
+            if confirma == 1:
+                # Verifica se a empresa existe na base de dados
+                if not self.verifica_existencia_empresa(oracle, cnpj):            
+                    # Recupera os dados da nova empresa criada transformando em um DataFrame
+                    df_empresa = oracle.sqlToDataFrame(f"select cnpj, nome_fantasia from empresa where cnpj = {cnpj}")
+                    # Revome a empresa da tabela
+                    oracle.write(f"delete from empresa where cnpj = {cnpj}")            
+                    # Cria um novo objeto empresa para informar que foi removido
+                    #empresa_excluido = Empresa(df_empresa.cnpj.values[0], df_empresa.nome_fantasia.values[0])
+                    # Exibe os atributos da empresa excluída
+                    print("Empresa Removida com Sucesso!")
+                    #print(empresa_excluido.to_string())
+                    print(cnpj)
+                    opcao = int(input("Deseja excluir mais empresas? 1-Sim 2-Não"))
+                else:
+                    print(f"O CNPJ {cnpj} não existe.")
+                    opcao = 3
             else:
-                print(f"O CNPJ {cnpj} não existe.")
-                opcao = 3
+                opcao = int(input("Deseja excluir mais empresas? 1-Sim 2-Não"))
         if opcao == 2:
             print("Retornando a tela principal")
 
