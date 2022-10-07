@@ -79,22 +79,25 @@ class Controller_funcionario:
         while opcao == 1:
             # Solicita ao usuário o CPF do funcionario a ser alterado
             cpf = int(input("CPF do funcionario que irá excluir: "))        
-
-            # Verifica se o funcionario existe na base de dados
-            if not self.verifica_existencia_funcionario(oracle, cpf):            
-                # Recupera os dados do novo funcionario criado transformando em um DataFrame
-                df_funcionario = oracle.sqlToDataFrame(f"select cpf, nome from funcionario where cpf = {cpf}")
-                # Revome o funcionario da tabela
-                oracle.write(f"delete from funcionario where cpf = {cpf}")            
-                # Cria um novo objeto funcionario para informar que foi removido
-                funcionario_excluido = Funcionario(df_funcionario.cpf.values[0], df_funcionario.nome.values[0])
-                # Exibe os atributos do funcionario excluído
-                print("Funcionario Removido com Sucesso!")
-                print(funcionario_excluido.to_string())
-                opcao = int(input("Deseja excluir mais funcionarios? 1-Sim 2-Não"))
+            confirma = int(input("Tem certeza que deseja excluir?1-sim 2-não"))
+            if confirma == 1:
+                # Verifica se o funcionario existe na base de dados
+                if not self.verifica_existencia_funcionario(oracle, cpf):            
+                    # Recupera os dados do novo funcionario criado transformando em um DataFrame
+                    df_funcionario = oracle.sqlToDataFrame(f"select cpf, nome from funcionario where cpf = {cpf}")
+                    # Revome o funcionario da tabela
+                    oracle.write(f"delete from funcionario where cpf = {cpf}")            
+                    # Cria um novo objeto funcionario para informar que foi removido
+                    funcionario_excluido = Funcionario(df_funcionario.cpf.values[0], df_funcionario.nome.values[0])
+                    # Exibe os atributos do funcionario excluído
+                    print("Funcionario Removido com Sucesso!")
+                    print(funcionario_excluido.to_string())
+                    opcao = int(input("Deseja excluir mais funcionarios? 1-Sim 2-Não"))
+                else:
+                    print(f"O CPF {cpf} não existe.")
+                    opcao = 3
             else:
-                print(f"O CPF {cpf} não existe.")
-                opcao = 3
+                opcao = int(input("Deseja excluir mais funcionarios? 1-Sim 2-Não"))
         if opcao == 2:
             print("Retornando a tela principal")
 
