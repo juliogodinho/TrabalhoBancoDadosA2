@@ -146,26 +146,28 @@ class Controller_holerite:
         while opcao == 1:
             # Solicita ao usuário o código da holerite a ser excluida
             codigo = int(input("Código da Holerite que irá excluir: "))        
-
-            # Verifica se o produto existe na base de dados
-            if not self.verifica_existencia_holerite(oracle, codigo):            
-                # Recupera os dados do nova holerite criado transformando em um DataFrame
-                #df_holerite = oracle.sqlToDataFrame(f"select codigo, salariobruto, fgts, irpf, salarioliquido from holerite where codigo = {codigo}")
-                #funcionario = self.valida_funcionario(oracle, df_holerite.cpf.values[0])
-                #empresa = self.valida_empresa(oracle, df_holerite.cnpj.values[0])
+            confirma = int(input("Tem certeza que deseja excluir?1-sim 2-não"))
+            if confirma == 1:
+                # Verifica se o produto existe na base de dados
+                if not self.verifica_existencia_holerite(oracle, codigo):            
+                    # Recupera os dados do nova holerite criado transformando em um DataFrame
+                    #df_holerite = oracle.sqlToDataFrame(f"select codigo, salariobruto, fgts, irpf, salarioliquido from holerite where codigo = {codigo}")
+                    #funcionario = self.valida_funcionario(oracle, df_holerite.cpf.values[0])
+                    #empresa = self.valida_empresa(oracle, df_holerite.cnpj.values[0])
  
-                # Revome a holerite
-                oracle.write(f"delete from holerite where codigo = {codigo}")
-                # Cria um novo objeto Produto para informar que foi removido
-                #holerite_excluido = Holerite(df_holerite.codigo.values[0], df_holerite.salariobruto.values[0])
-                # Exibe os atributos do produto excluído
-                print("Holerite Removida com Sucesso!")
-                print("Codigo da Holerite excluida: ", codigo)
-                #print(holerite_excluido.to_string())
-                opcao = int(input("Deseja excluir mais holerites? 1-Sim 2-Não"))
-                    
+                    # Revome a holerite
+                    oracle.write(f"delete from holerite where codigo = {codigo}")
+                    # Cria um novo objeto Produto para informar que foi removido
+                    #holerite_excluido = Holerite(df_holerite.codigo.values[0], df_holerite.salariobruto.values[0])
+                    # Exibe os atributos do produto excluído
+                    print("Holerite Removida com Sucesso!")
+                    print("Codigo da Holerite excluida: ", codigo)
+                    #print(holerite_excluido.to_string())
+                    opcao = int(input("Deseja excluir mais holerites? 1-Sim 2-Não"))          
+                else:
+                    print(f"O código {codigo} não existe.")
+                    opcao = int(input("Deseja excluir mais holerites? 1-Sim 2-Não"))
             else:
-                print(f"O código {codigo} não existe.")
                 opcao = int(input("Deseja excluir mais holerites? 1-Sim 2-Não"))
         if opcao == 2:
             print("Retornando a tela principal")
