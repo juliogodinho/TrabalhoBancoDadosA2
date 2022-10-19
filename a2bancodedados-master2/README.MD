@@ -48,6 +48,8 @@ Para executar, bastar inserir o comando a seguir, o resto é intuitivo:
   ```shell
   export ORACLE_HOME=/usr/local/oracle/instantclient_18_5/lib/oracle/18.5/client64/lib
   ```
+## Vídeo Descritivo
+(vídeo demonstrativo)[]
 
 ## Contato
 - [E-Mail](mailto:juliogodinho@gmail.com)
