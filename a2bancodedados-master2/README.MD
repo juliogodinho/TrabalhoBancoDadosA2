@@ -13,7 +13,7 @@ Para executar, bastar inserir o comando a seguir, o resto é intuitivo:
 - [src](src): Nesse diretório estão os scripts do sistema
     * [conexion](src/conexion): Nesse repositório encontra-se o [módulo de conexão com o banco de dados Oracle](src/conexion/oracle_queries.py)
     * [controller](src/controller/): Nesse diretório encontram-sem as classes controladoras, responsáveis por realizar inserção, alteração e exclusão dos registros das tabelas.
-    * [model](src/model/): Nesse diretório encontram-se as classes das entidades descritas no [diagrama relacional](diagrams/DIAGRAMA_RELACIONAL_PEDIDOS.pdf)
+    * [model](src/model/): Nesse diretório encontram-se as classes das entidades descritas no [diagrama relacional](diagrams/DIAGRAMA_RELACIONAL_RH.pdf)
     * [reports](src/reports/) Nesse diretório encontra-se a [classe](src/reports/relatorios.py) responsável por gerar todos os relatórios do sistema
     * [sql](src/sql/): Nesse diretório encontram-se os scripts utilizados para geração dos relatórios a partir da [classe relatorios](src/reports/relatorios.py)
     * [utils](src/utils/): Nesse diretório encontram-se scripts de [configuração](src/utils/config.py) e automatização da [tela de informações iniciais](src/utils/splash_screen.py)
@@ -50,5 +50,11 @@ Para executar, bastar inserir o comando a seguir, o resto é intuitivo:
   ```
 
 ## Contato
-- [LinkedIn](https://linkedin.com/in/howardroatti)
-- [E-Mail](mailto:howardcruzroatti@gmail.com)
+- [E-Mail](mailto:juliogodinho@gmail.com)
+
+## Integrantes
+Livia Hand Fraga;
+Ciro Massariol de Araujo;
+Júlio Godinho Carreira;
+Arthur Grinevald Samico;
+Gabrielli Mombrini Feletti.
