@@ -49,7 +49,10 @@ Para executar, bastar inserir o comando a seguir, o resto é intuitivo:
   export ORACLE_HOME=/usr/local/oracle/instantclient_18_5/lib/oracle/18.5/client64/lib
   ```
 ## Vídeo Descritivo
-[Vídeo Demonstrativo](bancodados-2022-10-06_11.03.08.mkv)
+[Vídeo Demonstrativo](bancodados-2022-10-06_11.03.08.mkv) 
+
+## Vídeo no Youtube
+[Vídeo Demonstrativo no YouTube](https://www.youtube.com/watch?v=ROUAz9suEDE)
 
 ## Contato
 - [E-Mail](mailto:juliogodinho@gmail.com)
