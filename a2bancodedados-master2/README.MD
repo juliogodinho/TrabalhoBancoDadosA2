@@ -6,10 +6,10 @@ Para executar, bastar inserir o comando a seguir, o resto é intuitivo:
 ```
 
 ## Organização
-- [diagrams](diagrams): Nesse diretório está o [diagrama relacional](diagrams/DIAGRAMA_RELACIONAL_PEDIDOS.pdf) (lógico) do sistema.
-    * O sistema possui cinco entidades: PRODUTOS, CLIENTES, FORNECEDORES, PEDIDOS e ITENS_PEDIDO
+- [diagrams](diagrams): Nesse diretório está o [diagrama relacional](diagrams/RH.pdf) (lógico) do sistema.
+    * O sistema possui três entidades: HOLERITE, FUNCIONARIOS, EMPRESAS
 - [sql](sql): Nesse diretório estão os scripts para criação das tabelas e inserção de alguns dados fictícios para testes do sistema
-    * [create_tables_pedidos.sql](sql/create_tables_pedidos.sql): script responsável pela criação das tabelas e relacionamentos
+    * [create_tables_.sql](sql/create_tables_pedidos.sql): script responsável pela criação das tabelas e relacionamentos
     * [inserting_samples_records.sql](sql/inserting_samples_records.sql): script responsável pela inserção dos registros fictícios para testes do sistema.
       - Obs.: Há alguns blocos PL/SQL que precisam ser executados um a um, a depender da ferramenta que estiver utilizando
 - [src](src): Nesse diretório estão os scripts do sistema
